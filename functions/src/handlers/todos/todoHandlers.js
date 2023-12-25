@@ -102,7 +102,7 @@ async function updateManyByIds(ctx) {
     }
     const existIds = existTodos.map(todo => todo.id);
 
-    await updateManyByIdsTodos(existIds, data);
+    await updateManyByIdsTodos(data, existIds);
 
     ctx.status = 200;
     ctx.body = {
@@ -161,7 +161,7 @@ async function updateOne(ctx) {
       throw new Error(`Todos Not Found with id: ${id}`);
     }
 
-    await updateManyByIdsTodos([id], postData);
+    await updateManyByIdsTodos(postData, [id]);
 
     ctx.status = 200;
     return (ctx.body = {
